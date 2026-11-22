@@ -57,7 +57,7 @@ def check_size(path):
 def main(argv):
     here = os.path.dirname(os.path.abspath(__file__))
     src = os.path.join(here, ENTRY)
-    out_dir = argv[1] if len(argv) > 1 else os.path.join(here, "output")
+    out_dir = argv[1] if len(argv) > 1 else os.environ.get("MAKEFUN_OUTPUT_DIR", os.path.join(here, "output"))
     os.makedirs(out_dir, exist_ok=True)
     if not os.path.isfile(src):
         raise SystemExit("entry.png not found next to main.py: %s" % src)
